@@ -600,7 +600,7 @@
     <script src="assets/vendor/libs/popper/popper.js"></script>
     <script src="assets/vendor/js/bootstrap.js"></script>
     <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="assets/vendor/js/JsBarcode.all.min.js"></script>
 
     <script src="assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
