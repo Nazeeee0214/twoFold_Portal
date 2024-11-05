@@ -48,7 +48,7 @@
     <!-- Core CSS -->
     <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />
     <link rel="stylesheet" href="assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="assets/css/demo.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -574,6 +574,12 @@
 
           <!-- Content wrapper -->
           <div class="content-wrapper">
+          <div class="container">
+        <input type="text" id="barcodeInput" placeholder="Enter text or number" maxlength="20" />
+        <button onclick="generateBarcode()">Generate Barcode</button>
+        <svg id="barcode"></svg>
+    </div>
+    
 
           </div>
           <!-- Content wrapper -->
@@ -594,6 +600,7 @@
     <script src="assets/vendor/libs/popper/popper.js"></script>
     <script src="assets/vendor/js/bootstrap.js"></script>
     <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
 
     <script src="assets/vendor/js/menu.js"></script>
     <!-- endbuild -->

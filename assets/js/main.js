@@ -116,3 +116,25 @@ let menu, animate;
   // Auto update menu collapsed/expanded based on the themeConfig
   window.Helpers.setCollapsed(true, false);
 })();
+
+/* barcode*****************************/
+
+function generateBarcode() {
+  const barcodeValue = document.getElementById('barcodeInput').value;
+  const barcodeSvg = document.getElementById('barcode');
+
+  if (barcodeValue.trim() === "") {
+      alert("Please enter a value to generate a barcode.");
+      return;
+  }
+
+  // Generate barcode with JsBarcode
+  JsBarcode(barcodeSvg, barcodeValue, {
+      format: "CODE128",         // Barcode format
+      lineColor: "black",         // Line color
+      width: 2,                  // Bar width
+      height: 100,               // Bar height
+      displayValue: true         // Display text below barcode
+  });
+}
+
