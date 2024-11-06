@@ -1,10 +1,30 @@
 <?php
 session_start();
 
-// Check if the user is already logged in, redirect to index.php if true
-if (isset($_SESSION['user_id'])) { // Replace 'user_id' with the appropriate session variable you set on login
+// Predefined username and password (example)
+$predefined_username = 'admin'; // Set your desired username
+$predefined_password = 'password123'; // Set your desired password
+
+// Check if the user is already logged in
+if (isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
+}
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Check if username and password match the predefined values
+    if ($username === $predefined_username && $password === $predefined_password) {
+        // Set the session variable for logged-in user
+        $_SESSION['user_id'] = $username; // or you can set a unique user ID here
+        header("Location: index.php");
+        exit();
+    } else {
+        $error_message = "Invalid username or password.";
+    }
 }
 ?>
 
