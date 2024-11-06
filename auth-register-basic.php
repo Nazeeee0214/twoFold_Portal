@@ -79,7 +79,7 @@
                   <span class="app-brand-logo demo">
                     <svg
                       width="50"
-                      viewBox="0 0 25 42"
+                      viewBox="0 0 30 50"
                       version="1.1"
                       xmlns="http://www.w3.org/2000/svg"
                       xmlns:xlink="http://www.w3.org/1999/xlink"
