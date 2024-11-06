@@ -35,6 +35,8 @@
     <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Eternal Clothing Line Store</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
