@@ -16,7 +16,7 @@
 .app-brand-text.demo {
   font-size: 1.75rem;
   letter-spacing: -0.5px;
-  text-transform: lowercase;
+  text-transform: capitalize;
 }
 
 /* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
@@ -141,7 +141,7 @@ svg {
 }
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f2e6e6;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -166,13 +166,13 @@ input, button {
 }
 
 button {
-  background-color: #28a745;
+  background-color: #800000;
   color: white;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #4e0707;
 }
 
 svg {
