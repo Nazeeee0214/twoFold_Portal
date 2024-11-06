@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if the user is already logged in, redirect to index.php if true
+if (isset($_SESSION['user_id'])) { // Replace 'user_id' with the appropriate session variable you set on login
+    header("Location: index.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
