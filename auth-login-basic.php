@@ -168,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
               <h4 class="mb-2">Welcome to Sneat! 👋</h4>
               
 
-              <form id="formAuthentication" class="mb-3" action="index.php" method="POST">
+              <form id="formAuthentication" class="mb-3" action="auth-login-basic.php" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label">Username</label>
                   <input
