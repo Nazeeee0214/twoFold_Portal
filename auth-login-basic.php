@@ -1,3 +1,26 @@
+<?php
+// auth-login-basic.php
+session_start();
+
+// Check if form data is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Validate the username and password (replace with your own authentication logic)
+    if ($username === 'yourUsername' && $password === 'yourPassword') {
+        // Store session variable to indicate the user is logged in
+        $_SESSION['loggedin'] = true;
+        
+        // Redirect to index.php after successful login
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Invalid username or password.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
