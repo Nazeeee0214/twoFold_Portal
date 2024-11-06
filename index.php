@@ -75,7 +75,6 @@ if (!isset($_SESSION['user_id'])) {
    <?php include 'partials/_footerjs.php'
    ?>
 
-   <!-- Logout Link -->
-   <a href="logout.php">Logout</a>
+   
   </body>
 </html>
