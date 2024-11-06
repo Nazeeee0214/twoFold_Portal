@@ -161,7 +161,7 @@
                       id="password"
                       class="form-control"
                       name="password"
-                      placeholder="&#xb5;&#xb5;&#xb5;&#xb5;&#xb5;&#xb5;&#xb5;&#xb5;&#xb5;&#xb5;&#xb5;&#xb5;"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
