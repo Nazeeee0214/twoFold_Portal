@@ -78,7 +78,7 @@
                 <a href="index.php" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
                     <svg
-                      width="25"
+                      width="50"
                       viewBox="0 0 25 42"
                       version="1.1"
                       xmlns="http://www.w3.org/2000/svg"
@@ -131,12 +131,11 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder">BINNOVATION</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Adventure starts here 🚀</h4>
-              <p class="mb-4">Make your app management easy and fun!</p>
+              <p class="mb-4">Make up your mind!</p>
 
               <form id="formAuthentication" class="mb-3" action="index.php" method="POST">
                 <div class="mb-3">
@@ -194,17 +193,7 @@
       </div>
     </div>
 
-    <!-- / Content -->
-
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
-
+   
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="assets/vendor/libs/jquery/jquery.js"></script>

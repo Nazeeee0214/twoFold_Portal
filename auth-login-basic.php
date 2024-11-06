@@ -1,3 +1,26 @@
+<?php
+// auth-login-basic.php
+session_start();
+
+// Check if form data is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Validate the username and password (replace with your own authentication logic)
+    if ($username === 'yourUsername' && $password === 'yourPassword') {
+        // Store session variable to indicate the user is logged in
+        $_SESSION['loggedin'] = true;
+        
+        // Redirect to index.php after successful login
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Invalid username or password.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -136,17 +159,17 @@
               </div>
               <!-- /Logo -->
               <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-              <p class="mb-4">Please sign-in to your account and start the adventure</p>
+              
 
               <form id="formAuthentication" class="mb-3" action="index.php" method="POST">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email or Username</label>
+                  <label for="email" class="form-label">Username</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
-                    placeholder="Enter your email or username"
+                    name="username"
+                    placeholder="Enter your username"
                     autofocus
                   />
                 </div>
@@ -193,16 +216,7 @@
       </div>
     </div>
 
-    <!-- / Content -->
-
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
+   
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
