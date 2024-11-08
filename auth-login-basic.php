@@ -1,3 +1,33 @@
+<?php
+session_start();
+
+// Predefined username and password (example)
+$predefined_username = 'admin'; // Set your desired username
+$predefined_password = 'password123'; // Set your desired password
+
+// Check if the user is already logged in
+if (isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Check if username and password match the predefined values
+    if ($username === $predefined_username && $password === $predefined_password) {
+        // Set the session variable for logged-in user
+        $_SESSION['user_id'] = $username; // or you can set a unique user ID here
+        header("Location: index.php");
+        exit();
+    } else {
+        $error_message = "Invalid username or password.";
+    }
+}
+?>
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -75,7 +105,7 @@
             <div class="card-body">
               <!-- Logo -->
               <div class="app-brand justify-content-center">
-                <a href="auth-login-basic.php" class="app-brand-link gap-2">
+                <a href="index.php" class="app-brand-link gap-2">
                   <span class="app-brand-logo demo">
                     <svg
                       width="25"
@@ -136,17 +166,17 @@
               </div>
               <!-- /Logo -->
               <h4 class="mb-2">Welcome to Sneat! 👋</h4>
-              <p class="mb-4">Please sign-in to your account and start the adventure</p>
+              
 
-              <form id="formAuthentication" class="mb-3" action="index.php" method="POST">
+              <form id="formAuthentication" class="mb-3" action="auth-login-basic.php" method="POST">
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email or Username</label>
+                  <label for="email" class="form-label">Username</label>
                   <input
                     type="text"
                     class="form-control"
                     id="email"
-                    name="email-username"
-                    placeholder="Enter your email or username"
+                    name="username"
+                    placeholder="Enter your username"
                     autofocus
                   />
                 </div>
@@ -193,16 +223,7 @@
       </div>
     </div>
 
-    <!-- / Content -->
-
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
+   
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->

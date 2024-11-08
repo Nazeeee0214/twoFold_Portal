@@ -131,11 +131,11 @@
                       </g>
                     </svg>
                   </span>
-                  <span class="app-brand-text demo text-body fw-bolder">Sneat</span>
+                  <span class="app-brand-text demo text-body fw-bolder">BINNOVATION</span>
                 </a>
               </div>
               <!-- /Logo -->
-              <h4 class="mb-2">Forgot Password? 🔒</h4>
+              <h4 class="mb-2">Forgot Password?🔒</h4>
               <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
               <form id="formAuthentication" class="mb-3" action="index.php" method="POST">
                 <div class="mb-3">
@@ -164,16 +164,7 @@
       </div>
     </div>
 
-    <!-- / Content -->
-
-    <div class="buy-now">
-      <a
-        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
-        target="_blank"
-        class="btn btn-danger btn-buy-now"
-        >Upgrade to Pro</a
-      >
-    </div>
+   
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
