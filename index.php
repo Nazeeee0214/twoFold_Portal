@@ -18,30 +18,29 @@
   dir="ltr"
   data-theme="theme-default"
   data-assets-path="assets/"
-  data-template="vertical-menu-template-free"
->
-  <?php include 'partials/_header.php'
-  ?>
+  data-template="vertical-menu-template-free">
+<?php include 'partials/_header.php'
+?>
 
-  <body>
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container">
-        <!-- Menu -->
+<body>
+  <!-- Layout wrapper -->
+  <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      <!-- Menu -->
 
-       <?php include 'partials/_sidebar.php'
-       ?>
-        <!-- / Menu -->
+      <?php include 'partials/_sidebar.php'
+      ?>
+      <!-- / Menu -->
 
-        <!-- Layout container -->
-        <div class="layout-page">
-          <!-- Navbar -->
+      <!-- Layout container -->
+      <div class="layout-page">
+        <!-- Navbar -->
 
-         <?php include 'partials/_navbar.php';
-         ?>
-          <!-- / Navbar -->
+        <?php include 'partials/_navbar.php';
+        ?>
+        <!-- / Navbar -->
 
-          <!-- Content wrapper -->
+        <!-- Content wrapper -->
         <div class="content-wrapper">
           <div class="barcode-container">
             <input type="text" id="barcodeInput" placeholder="Enter text or number" maxlength="20" />
@@ -58,10 +57,11 @@
     </div>
     <!-- / Layout wrapper -->
 
-  
+
 
     <!-- Core JS -->
-   <?php include 'partials/_footerjs.php'
-   ?>
-  </body>
+    <?php include 'partials/_footerjs.php'
+    ?>
+</body>
+
 </html>
