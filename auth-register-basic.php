@@ -1,35 +1,3 @@
-<?php
-include "db_conn.php";
-
-$username = $_POST["username"];
-$password = $_POST["password"]; // Plain-text password
-$fullname = $_POST["fullname"];
-$restriction = $_POST["restriction"];
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-try {
-  // Create a PDO instance
-  $pdo = new PDO("mysql:host=$databaseHost;dbname=$databaseName", $databaseUsername, $databasePassword);
-
-  // Set PDO to throw exceptions for errors
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-  // Insert the new user into the database
-  $stmt = $pdo->prepare("INSERT INTO users (username, password, restriction, fullname) VALUES (:username, :password, :restriction, :fullname)");
-  $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-  $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
-  $stmt->bindParam(':restriction', $restriction, PDO::PARAM_STR);
-  $stmt->bindParam(':fullname', $fullname, PDO::PARAM_STR);
-
-  $stmt->execute();
-
-} catch (PDOException $e) {
-  echo "Error: " . $e->getMessage();
-}
-
-?>
-
 <!DOCTYPE html>
 
 <!-- =========================================================
