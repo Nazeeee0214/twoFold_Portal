@@ -1,17 +1,4 @@
 <!DOCTYPE html>
-
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style customizer-hide"
@@ -149,10 +136,12 @@
                     autofocus
                   />
                 </div>
+  <!--fullname-->
                 <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
+                  <label for="fullname" class="form-label">Fullname</label>
+                  <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter your fullname" />
                 </div>
+
                 <div class="mb-3 form-password-toggle">
                   <label class="form-label" for="password">Password</label>
                   <div class="input-group input-group-merge">
@@ -169,7 +158,7 @@
                 </div>
 
                 <div class="mb-3">
-                  <div class="form-check">
+                  <div class="form-checsk">
                     <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
                     <label class="form-check-label" for="terms-conditions">
                       I agree to
@@ -201,6 +190,12 @@
     <script src="assets/vendor/js/bootstrap.js"></script>
     <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
+
+
+
+
+
+
     <script src="assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
@@ -210,7 +205,18 @@
     <script src="assets/js/main.js"></script>
 
     <!-- Page JS -->
-
+     
+     <script>
+      function validatePassword() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
+        if (password !== confirmPassword) {
+          alert("Passwords do not match. Please try again.");
+          return false;
+        }
+        return true;
+      }
+    </script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
