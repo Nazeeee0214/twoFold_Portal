@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template-free">
+<?php
+session_start();
+
+// Check if the user is logged in by checking a session variable, e.g., 'user_id'
+if (!isset($_SESSION['user_id'])) {
+  // Redirect to login page
+  header("Location: auth-login-basic.php");
+  exit();
+}
+
+$mpg = 'Data Manager';
+$spg = 'dm';
+$tit = 'Data Manager';
+
+?>
+
 
 <!-- Header Include -->
 <?php include 'partials/_header.php' ?>
 
 
+<title> <?php echo $tit; ?> </title>
 
 <body>
   <!-- Layout wrapper -->
@@ -57,8 +72,8 @@
           startAngle: 180,
           endAngle: 0,
           min: 0,
-          max: 240,
-          splitNumber: 12,
+          max: 100,
+          splitNumber: 10,
           itemStyle: {
             color: '#58D9F9',
             shadowColor: 'rgba(0,138,255,0.45)',
@@ -116,7 +131,7 @@
             offsetCenter: [0, '35%'],
             valueAnimation: true,
             formatter: function(value) {
-              return '{value|' + value.toFixed(0) + '}{unit|km/h}';
+              return '{value|' + value.toFixed(0) + '}{unit|%}';
             },
             rich: {
               value: {
@@ -127,7 +142,7 @@
               unit: {
                 fontSize: 12,
                 color: '#999',
-                padding: [0, 0, -20, 10]
+                padding: [0, 0, 0, 10]
               }
             }
           },
