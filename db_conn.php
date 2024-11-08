@@ -6,7 +6,7 @@ $password = "";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
-// Check connection hbAZk18VnMPiB6rpABHV
+// Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
