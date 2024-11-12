@@ -154,13 +154,13 @@
                   <div class="input-group input-group-merge">
                     <span class="input-group-text"><i class="bx bx-user"></i></span>
                     <select class="form-select" id="suffix" name="suffix" aria-label="Default select example">
-                      <option selected></option>
-                      <option value="2">Jr.</option>
-                      <option value="3">Sr.</option>
+                      <option selected>Please Select your suffix.</option>
+                      <option value="0">N/A</option>
+                      <option value="1">Jr.</option>
+                      <option value="2">Sr.</option>
                       <option value="3">II</option>
-                      <option value="3">III</option>
-                      <option value="3">IV</option>
-                      <option value="3">V</option>
+                      <option value="4">III</option>
+                      <option value="5">IV</option>
                     </select>
                   </div>
                 </div>
