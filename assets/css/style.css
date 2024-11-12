@@ -136,18 +136,8 @@ button:hover {
   background-color: #218838;
 }
 
-svg {
-  margin-top: 20px;
-}
-body {
-  font-family: Arial, sans-serif;
-  background-color: whitesmoke;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+
+
 
 .chart-container {
   text-align: center;

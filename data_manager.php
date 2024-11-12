@@ -36,15 +36,18 @@ $tit = 'Data Manager';
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <!-- Main Content Area -->
-          <div class="row">
-            <div class="col-6">
-              <div class="chart-container">
-                <div id="botlcap"></div>
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Management /</span> Bin capacity</h4>
+            <div class="row">
+              <div class="col-6 ">
+                <div class="chart-container">
+                  <div id="botlcap"></div>
+                </div>
               </div>
-            </div>
-            <div class="col-6">
-              <div class="chart-container">
-                <div id="main"></div>
+              <div class="col-6">
+                <div class="chart-container">
+                  <div id="main"></div>
+                </div>
               </div>
             </div>
           </div>

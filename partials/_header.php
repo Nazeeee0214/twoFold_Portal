@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="assets/" data-template="vertical-menu-template-free">
 
+<?php
+ini_set('session.gc_maxlifetime', value: 60 * 60 * 24 * 365);
+session_set_cookie_params(60 * 60 * 24 * 365);
+session_start();
+
+if (!isset($_SESSION['user'])) {
+  header('location:auth-login-basic.php');
+}
+?>
+
 <head>
   <meta charset="utf-8" />
   <meta
@@ -11,7 +21,7 @@
   <meta name="description" content="" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon/b-logo3.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
