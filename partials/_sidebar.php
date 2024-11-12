@@ -84,11 +84,14 @@ function spg($hyp)
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Profile Settings</span>
+    </li>
 
     <!--along with the Dashboard_profile-->
     <li class="menu-item  <?php echo pg('Profile')[0]; ?>">
       <a href="profile.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <i class="menu-icon tf-icons bx bx-user-circle"></i>
         <div data-i18n="Analytics">Profile</div>
       </a>
     </li>
@@ -96,19 +99,12 @@ function spg($hyp)
     <!--along with the Dashboard_-->
     <li class="menu-item  <?php echo pg('Transaction History')[0]; ?>">
       <a href="t_history.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <i class="menu-icon tf-icons bx bx-stats"></i>
         <div data-i18n="Analytics">Transaction History</div>
       </a>
     </li>
 
-    
-<!--along with the Dashboard_about_us-->
-    <li class="menu-item  <?php echo pg('About Us')[0]; ?>">
-      <a href="about_us.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
-        <div data-i18n="Analytics">About Us</div>
-      </a>
-    </li>
+
 
 
     <!--Management for the ADMIN PORTAL-->
@@ -118,17 +114,29 @@ function spg($hyp)
 
     <li class="menu-item  <?php echo pg('Data Manager')[0]; ?>">
       <a href="data_manager.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <i class="menu-icon tf-icons bx bx-analyse"></i>
         <div data-i18n="Analytics">Data Manager</div>
       </a>
     </li>
 
     <li class="menu-item  <?php echo pg('Rewards System')[0]; ?>">
       <a href="data_manager.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <i class="menu-icon tf-icons bx bx-credit-card"></i>
         <div data-i18n="Analytics">Rewards System</div>
       </a>
     </li>
 
-  
+    <!--Management for the ADMIN PORTAL-->
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">More</span>
+    </li>
+    <!--along with the Dashboard_about_us-->
+    <li class="menu-item  <?php echo pg('About Us')[0]; ?>">
+      <a href="about_us.php" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-heart-circle"></i>
+        <div data-i18n="Analytics">About Us</div>
+      </a>
+    </li>
+
+
 </aside>

@@ -24,7 +24,8 @@ if (!empty('student_id') && !empty('password')) {
         if ($result && password_verify($password, $result['password'])) {
             $_SESSION['user'] = [
                 'fullname' => $result['fullname'],
-                'restrictions' => $result['restriction']
+                'restrictions' => $result['restriction'],
+                'student_id' => $result['student_id'],
             ];
             echo "success";
         } else {

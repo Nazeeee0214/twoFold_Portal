@@ -4,13 +4,18 @@ $mpg = 'Dashboard';
 $spg = 'dsh';
 $tit = 'Dashboard';
 
+
+// Assuming you're using PDO to fetch data
+
 ?>
 
 
 
 <?php include 'partials/_header.php'
+
 ?>
 <title> <?php echo $tit; ?> </title>
+
 
 <body>
   <!-- Layout wrapper -->
@@ -33,25 +38,43 @@ $tit = 'Dashboard';
         <!-- Content wrapper -->
         <div class="content-wrapper">
           <div class="barcode-container">
-            <input type="text" id="barcodeInput" placeholder="Enter text or number" maxlength="20" />
-            <button onclick="generateBarcode()">Generate Barcode</button><br>
             <svg id="barcode"></svg>
           </div>
-          <!-- Content wrapper -->
         </div>
-        <!-- / Layout page -->
+
+        <!-- Content wrapper -->
       </div>
-
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
+      <!-- / Layout page -->
     </div>
-    <!-- / Layout wrapper -->
+
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
+  </div>
+  <!-- / Layout wrapper -->
 
 
 
-    <!-- Core JS -->
-    <?php include 'partials/_footerjs.php'
-    ?>
+  <!-- Core JS -->
+  <?php include 'partials/_footerjs.php'
+  ?>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const barcodeValue = <?php echo  $_SESSION['user']['student_id'] ?>;
+
+      if (barcodeValue) {
+        JsBarcode("#barcode", barcodeValue, {
+          format: "CODE128",
+          lineColor: "black",
+          width: 2,
+          height: 100,
+          displayValue: true
+        });
+      } else {
+        alert("No student ID found.");
+      }
+    });
+  </script>
 
 
 </body>
