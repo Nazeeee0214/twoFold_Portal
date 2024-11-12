@@ -157,40 +157,42 @@ $tit = 'Data Manager';
 
       option && myChart.setOption(option);
 
-      // JavaScript for #botlcap chart
-      var chartDom = document.getElementById('botlcap');
-      var myChart = echarts.init(chartDom);
-      var option;
+      // JavaScript for #botlcap chart with percentage labels on bars
+      var chartDomBotlcap = document.getElementById('botlcap');
+      var myChartBotlcap = echarts.init(chartDomBotlcap);
+      var optionBotlcap;
 
-      option = {
-        xAxis: {
-          data: ['Clear', 'Colored']
+      optionBotlcap = {
+      xAxis: {
+        data: ['Clear', 'Colored']
+      },
+      yAxis: {
+        max: 100 // Set max to 100 for percentage scale
+      },
+      dataGroupId: '',
+      animationDurationUpdate: 500,
+      series: {
+        type: 'bar',
+        id: 'sales',
+        data: [
+          { value: 26, groupId: 'clear', name: 'Clear' },
+          { value: 100, groupId: 'colored', name: 'Colored' }
+        ],
+        label: {
+          show: true,
+          position: 'top',
+          formatter: '{c}%', // Display value with percentage symbol
+          color: '#555',
+          fontSize: 12
         },
-        yAxis: {},
-        dataGroupId: '',
-        animationDurationUpdate: 500,
-        series: {
-          type: 'bar',
-          id: 'sales',
-          data: [{
-              value: 26,
-              groupId: 'clear'
-            },
-            {
-              value: 100,
-              groupId: 'colored'
-            }
-          ],
-          universalTransition: {
-            enabled: true,
-            divideShape: 'clone'
-          }
+        universalTransition: {
+          enabled: true,
+          divideShape: 'clone'
         }
-      };
+      }
+    };
 
-      option && myChart.setOption(option);
-    </script>
-
+    optionBotlcap && myChartBotlcap.setOption(optionBotlcap);
+  </script>
 </body>
-
 </html>
