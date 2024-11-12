@@ -1,15 +1,8 @@
 <?php
-session_start();
 
-// Check if the user is logged in by checking a session variable, e.g., 'user_id'
-if (!isset($_SESSION['user_id'])) {
-  // Redirect to login page
-  header("Location: auth-login-basic.php");
-  exit();
-}
 
 $mpg = 'About Us';
-$spg = 'abs';
+$spg = 'abt';
 $tit = 'About Us';
 
 ?>
@@ -33,5 +26,5 @@ $tit = 'About Us';
         <!-- Navbar Include -->
         <?php include 'partials/_navbar.php' ?>
 
-    <!-- Footer JS Include -->
-    <?php include 'partials/_footerjs.php' ?>
+        <!-- Footer JS Include -->
+        <?php include 'partials/_footerjs.php' ?>

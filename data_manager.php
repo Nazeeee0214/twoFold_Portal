@@ -1,22 +1,12 @@
 <?php
-session_start();
-
-// Check if the user is logged in by checking a session variable, e.g., 'user_id'
-if (!isset($_SESSION['user_id'])) {
-  // Redirect to login page
-  header("Location: auth-login-basic.php");
-  exit();
-}
 
 $mpg = 'Data Manager';
 $spg = 'dm';
 $tit = 'Data Manager';
 
-?>
 
 
-<!-- Header Include -->
-<?php include 'partials/_header.php' ?>
+include 'partials/_header.php' ?>
 
 
 <title> <?php echo $tit; ?> </title>
@@ -163,36 +153,44 @@ $tit = 'Data Manager';
       var optionBotlcap;
 
       optionBotlcap = {
-      xAxis: {
-        data: ['Clear', 'Colored']
-      },
-      yAxis: {
-        max: 100 // Set max to 100 for percentage scale
-      },
-      dataGroupId: '',
-      animationDurationUpdate: 500,
-      series: {
-        type: 'bar',
-        id: 'sales',
-        data: [
-          { value: 26, groupId: 'clear', name: 'Clear' },
-          { value: 100, groupId: 'colored', name: 'Colored' }
-        ],
-        label: {
-          show: true,
-          position: 'top',
-          formatter: '{c}%', // Display value with percentage symbol
-          color: '#555',
-          fontSize: 12
+        xAxis: {
+          data: ['Clear', 'Colored']
         },
-        universalTransition: {
-          enabled: true,
-          divideShape: 'clone'
+        yAxis: {
+          max: 100 // Set max to 100 for percentage scale
+        },
+        dataGroupId: '',
+        animationDurationUpdate: 500,
+        series: {
+          type: 'bar',
+          id: 'sales',
+          data: [{
+              value: 26,
+              groupId: 'clear',
+              name: 'Clear'
+            },
+            {
+              value: 100,
+              groupId: 'colored',
+              name: 'Colored'
+            }
+          ],
+          label: {
+            show: true,
+            position: 'top',
+            formatter: '{c}%', // Display value with percentage symbol
+            color: '#555',
+            fontSize: 12
+          },
+          universalTransition: {
+            enabled: true,
+            divideShape: 'clone'
+          }
         }
-      }
-    };
+      };
 
-    optionBotlcap && myChartBotlcap.setOption(optionBotlcap);
-  </script>
+      optionBotlcap && myChartBotlcap.setOption(optionBotlcap);
+    </script>
 </body>
+
 </html>

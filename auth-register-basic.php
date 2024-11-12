@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 
-<!-- =========================================================
-* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
-==============================================================
-
-* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
-* Created by: ThemeSelection
-* License: You must have a valid license purchased in order to legally use the theme for your project.
-* Copyright ThemeSelection (https://themeselection.com)
-
-=========================================================
- -->
-<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style customizer-hide"
@@ -20,20 +8,18 @@
   data-assets-path="assets/"
   data-template="vertical-menu-template-free">
 
-</html>
-
 <head>
   <meta charset="utf-8" />
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Sign Up</title>
+  <title>SignUp</title>
 
   <meta name="description" content="" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon/B-logo3.png" />
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon/b-logo3.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,7 +40,6 @@
 
   <!-- Page CSS -->
   <!-- Page -->
-
   <link rel="stylesheet" href="assets/vendor/css/pages/page-auth.css" />
   <!-- Helpers -->
   <script src="assets/vendor/js/helpers.js"></script>
@@ -155,12 +140,11 @@
                     <span class="input-group-text"><i class="bx bx-user"></i></span>
                     <select class="form-select" id="suffix" name="suffix" aria-label="Default select example">
                       <option selected>Please Select your suffix.</option>
-                      <option value="0">N/A</option>
-                      <option value="1">Jr.</option>
-                      <option value="2">Sr.</option>
-                      <option value="3">II</option>
-                      <option value="4">III</option>
-                      <option value="5">IV</option>
+                      <option value="Jr.">Jr.</option>
+                      <option value="Sr.">Sr.</option>
+                      <option value="II">II</option>
+                      <option value="III">III</option>
+                      <option value="IV">IV</option>
                     </select>
                   </div>
                 </div>
@@ -174,9 +158,8 @@
                       type="text"
                       class="form-control"
                       id="fullname"
-                      placeholder="John Doe"
-                      aria-label="John Doe"
-                      aria-describedby="basic-icon-default-fullname2" />
+                      placeholder="  Your name"
+                      readonly />
                   </div>
                 </div>
               </div>
@@ -194,7 +177,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row mb-3">
+              <div class="row mb-3 ">
                 <label class="col-sm-2 col-form-label" for="password">Password</label>
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
@@ -232,66 +215,78 @@
 
 
   <!-- Core JS -->
-  <!-- build:js assets/vendor/js/core.js -->
-  <script src="assets/vendor/libs/jquery/jquery.js"></script>
-  <script src="assets/vendor/libs/popper/popper.js"></script>
-  <script src="assets/vendor/js/bootstrap.js"></script>
-  <script src="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery.js"></script>
-  <script src="assets/js/jquery.cookie.js"></script>
-  <script src="assets/vendor/js/menu.js"></script>
-  <!-- Include jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-  <!-- endbuild -->
-
-  <!-- Vendors JS -->
-
-  <!-- Main JS -->
-  <script src="assets/js/main.js"></script>
-
+  <?php include("partials/_footerjs.php");
+  ?>
   <!-- Page JS -->
 
-
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 
   <script>
-    $("#reg").click(function() {
+    $(document).ready(function() {
+      // Update fullname field when any of the input fields change
+      $('#fname, #mname, #lname, #suffix').on('input', function() {
+        var fname = $('#fname').val();
+        var mname = $('#mname').val();
+        var lname = $('#lname').val();
+        var suffix = $('#suffix').val();
 
-      var student_id = $('#student_id').val();
-      var email = $('#email').val();
-      var fname = $('#fname').val();
-      var mname = $('#mname').val();
-      var lname = $('#lname').val();
-      var suffix = $('#suffix').val();
-      var fullname = $('#fullname').val();
-      var department = $('#department').val();
-      var password = $('#password').val();
+        // Create the full name by concatenating the values
+        var fullname = fname + (mname ? ' ' + mname : '') + ' ' + lname + (suffix && suffix !== 'Please Select your suffix.' ? ' ' + suffix : '');
 
-      console.log(student_id, email, fname, mname, lname, suffix, department, password);
-
-      $.post("server/register.inc.php", {
-        student_id: student_id,
-        email: email,
-        fname: fname,
-        mname: mname,
-        lname: lname,
-        suffix: suffix,
-        fullname: fullname,
-        department: department,
-        password: password,
-      }, function(response) {
-        alert(response); // Show the success or error message
-        if (response === "Registration successful!") {
-          window.location.href = "login.php"; // Redirect to login page after successful registration
-        }
+        // Set the value to the readonly fullname field
+        $('#fullname').val(fullname);
       });
 
+      // Password visibility toggle
+      $(".input-group-text.cursor-pointer").click(function() {
+        var passwordField = $("#password");
+        var type = passwordField.attr("type") === "password" ? "text" : "password";
+        passwordField.attr("type", type);
+        $(this).find("i").toggleClass("bx-hide bx-show");
+      });
+
+      // Handle form submission
+      $("form").on('submit', function(event) {
+        event.preventDefault();
+
+        var student_id = $('#student_id').val();
+        var email = $('#email').val();
+        var fname = $('#fname').val();
+        var mname = $('#mname').val();
+        var lname = $('#lname').val();
+        var suffix = $('#suffix').val();
+        var fullname = $('#fullname').val();
+        var department = $('#department').val();
+        var password = $('#password').val();
+
+        // Form validation
+        if (!student_id || !email || !fname || !lname || !password) {
+          alert("Please fill all required fields.");
+          return;
+        }
+
+        // Send data via POST
+        $.post("server/register.inc.php", {
+          student_id: student_id,
+          email: email,
+          fname: fname,
+          mname: mname,
+          lname: lname,
+          suffix: suffix,
+          fullname: fullname,
+          department: department,
+          password: password,
+        }, function(response) {
+          alert(response);
+          if (response === "Registration successful!") {
+            window.location.href = "auth-login-basic.php";
+          }
+        });
+      });
     });
   </script>
 
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
 
 </html>

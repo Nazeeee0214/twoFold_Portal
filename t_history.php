@@ -1,23 +1,15 @@
 <?php
-session_start();
 
-// Check if the user is logged in by checking a session variable, e.g., 'user_id'
-if (!isset($_SESSION['user_id'])) {
-  // Redirect to login page
-  header("Location: auth-login-basic.php");
-  exit();
-}
-
-$mpg = 'Transaction History';
+$mpg = 'Transactions';
 $spg = 'th';
-$tit = 'Transaction History';
+$tit = 'Transactions';
 
 ?>
 
 
-<!-- Header Include -->
-<?php include 'partials/_header.php' ?>
 
+<?php include 'partials/_header.php'
+?>
 
 <title> <?php echo $tit; ?> </title>
 
@@ -33,5 +25,5 @@ $tit = 'Transaction History';
         <!-- Navbar Include -->
         <?php include 'partials/_navbar.php' ?>
 
-    <!-- Footer JS Include -->
-    <?php include 'partials/_footerjs.php' ?>
+        <!-- Footer JS Include -->
+        <?php include 'partials/_footerjs.php' ?>
