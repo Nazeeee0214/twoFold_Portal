@@ -36,7 +36,7 @@ $tit = 'Dashboard';
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
-        <div class="content-wrapper">
+                <div class="content-wrapper">
           <div class="barcode-container">
             <svg id="barcode"></svg>
           </div>

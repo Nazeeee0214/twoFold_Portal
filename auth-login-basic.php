@@ -79,7 +79,7 @@
                   </a>
                 </div>
                 <div class="input-group input-group-merge">
-                  <input id="password" name="password" type="text" class="form-control p_input">
+                  <input id="password" name="password" type="password" class="form-control p_input">
                   <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                 </div>
               </div>
