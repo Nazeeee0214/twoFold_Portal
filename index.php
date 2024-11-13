@@ -57,6 +57,7 @@ $tit = 'Dashboard';
   <!-- Core JS -->
   <?php include 'partials/_footerjs.php'
   ?>
+  
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
