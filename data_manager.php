@@ -140,7 +140,7 @@ include 'partials/_header.php' ?>
             }
           },
           data: [{
-            value: 100
+            value: 20
           }]
         }]
       };

@@ -214,7 +214,7 @@ button.list-group-item-primary.active {
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #5f61e6;
+  background-color: #622b2b;
   border-color: #5f61e6;
   transform: translateY(-1px);
 }
@@ -570,7 +570,7 @@ a:hover {
 
 .bg-navbar-theme {
   background-color: #fff !important;
-  color: #800000;
+  color: #ffffff;
 }
 .bg-navbar-theme .navbar-brand,
 .bg-navbar-theme .navbar-brand a {
@@ -593,7 +593,7 @@ a:hover {
 .bg-navbar-theme .navbar-nav > .nav-link,
 .bg-navbar-theme .navbar-nav > .nav-item > .nav-link,
 .bg-navbar-theme .navbar-nav > .nav > .nav-item > .nav-link {
-  color: #800000;
+  color: #ffffff;
 }
 .bg-navbar-theme .navbar-nav > .nav-link:hover, .bg-navbar-theme .navbar-nav > .nav-link:focus,
 .bg-navbar-theme .navbar-nav > .nav-item > .nav-link:hover,
@@ -634,7 +634,7 @@ a:hover {
 }
 
 .layout-navbar {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+  background-color: #800000 !important;
   -webkit-backdrop-filter: saturate(200%) blur(6px);
           backdrop-filter: saturate(200%) blur(6px);
 }
