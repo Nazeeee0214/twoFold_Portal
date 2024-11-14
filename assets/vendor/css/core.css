@@ -1148,6 +1148,7 @@ progress {
   .col-md-3 {
     flex: 0 0 auto;
     width: 25%;
+   
   }
 
   .col-md-4 {
@@ -15230,6 +15231,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
 .layout-wrapper,
 .layout-container {
   width: 100%;
+  margin-bottom: -310px;
   display: flex;
   flex: 1 1 auto;
   align-items: stretch;
