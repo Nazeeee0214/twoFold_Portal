@@ -2,7 +2,7 @@
 
 $mpg = 'Profile';
 $spg = 'pfp';
-$tit = 'Dashboard';
+$tit = 'Profile';
 
 ?>
 

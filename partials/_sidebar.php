@@ -97,7 +97,7 @@ function spg($hyp)
     </li>
 
     <!--along with the Dashboard_-->
-    <li class="menu-item  <?php echo pg('Transaction History')[0]; ?>">
+    <li class="menu-item  <?php echo pg('Transactions')[0]; ?>">
       <a href="t_history.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-stats"></i>
         <div data-i18n="Analytics">Transaction History</div>
@@ -119,8 +119,8 @@ function spg($hyp)
       </a>
     </li>
 
-    <li class="menu-item  <?php echo pg('Rewards System')[0]; ?>">
-      <a href="data_manager.php" class="menu-link">
+    <li class="menu-item  <?php echo pg('Rewards')[0]; ?>">
+      <a href="Reward_sys.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-credit-card"></i>
         <div data-i18n="Analytics">Rewards System</div>
       </a>
