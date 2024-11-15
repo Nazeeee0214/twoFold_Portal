@@ -203,3 +203,10 @@ button:hover {
     cursor: pointer;
     border: solid 1px #BA68C8
 }
+
+#search-bar::placeholder{
+  color: #fff;
+}
+#search-bar{
+  color: #fff;
+}

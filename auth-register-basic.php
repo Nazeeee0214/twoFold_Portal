@@ -62,15 +62,15 @@
             <p class="mb-4">Please sign-in to your account and start the adventure</p>
             <form>
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="student_id">Student ID</label>
+                <label class="col-sm-2 col-form-label" for="user_id">Student ID</label>
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span class="input-group-text"><i class="bx bx-user"></i></span>
                     <input
                       type="text"
                       class="form-control"
-                      id="student_id"
-                      name="student_id"
+                      id="user_id"
+                      name="user_id"
                       placeholder="Student number" />
                   </div>
                 </div>
@@ -249,7 +249,7 @@
       $("form").on('submit', function(event) {
         event.preventDefault();
 
-        var student_id = $('#student_id').val();
+        var user_id = $('#user_id').val();
         var email = $('#email').val();
         var fname = $('#fname').val();
         var mname = $('#mname').val();
@@ -260,14 +260,14 @@
         var password = $('#password').val();
 
         // Form validation
-        if (!student_id || !email || !fname || !lname || !password) {
+        if (!user_id || !email || !fname || !lname || !password) {
           alert("Please fill all required fields.");
           return;
         }
 
         // Send data via POST
         $.post("server/register.inc.php", {
-          student_id: student_id,
+          user_id: user_id,
           email: email,
           fname: fname,
           mname: mname,

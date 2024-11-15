@@ -84,6 +84,14 @@ function spg($hyp)
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
+    <!--along with the Dashboard_-->
+    <li class="menu-item  <?php echo pg('Transactions')[0]; ?>">
+      <a href="t_history.php" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-stats"></i>
+        <div data-i18n="Analytics">Transaction History</div>
+      </a>
+    </li>
+
     <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Profile Settings</span>
     </li>
@@ -95,15 +103,6 @@ function spg($hyp)
         <div data-i18n="Analytics">Profile</div>
       </a>
     </li>
-
-    <!--along with the Dashboard_-->
-    <li class="menu-item  <?php echo pg('Transactions')[0]; ?>">
-      <a href="t_history.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-stats"></i>
-        <div data-i18n="Analytics">Transaction History</div>
-      </a>
-    </li>
-
 
 
 

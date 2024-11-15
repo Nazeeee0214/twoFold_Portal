@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` int(199) NOT NULL,
-  `student_id` int(8) NOT NULL,
+  `user_id` int(8) NOT NULL,
   `email` varchar(199) NOT NULL,
   `password` varchar(199) NOT NULL,
   `fname` varchar(199) NOT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `student_id`, `email`, `password`, `fname`, `mname`, `lname`, `suffix`, `fullname`, `department`, `restriction`, `created_at`) VALUES
+INSERT INTO `users` (`id`, `user_id`, `email`, `password`, `fname`, `mname`, `lname`, `suffix`, `fullname`, `department`, `restriction`, `created_at`) VALUES
 (1, 20214365, 'Email@gmail.com', '$2y$10$R13exV/Hqp.MNkqb7Mjjn.tdJkLeps0ibTEQ7vGnSUt93L441TKNq', 'John ', 'Cee', 'Nuh', 'Sr.', 'John Cee Nuh Sr.', 'BSECE', 'USER', '2024-11-12 05:55:19');
 
 --
@@ -58,7 +58,7 @@ INSERT INTO `users` (`id`, `student_id`, `email`, `password`, `fname`, `mname`, 
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `student_id` (`student_id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --

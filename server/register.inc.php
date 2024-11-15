@@ -2,7 +2,7 @@
 include "db_conn.inc.php";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $student_id = $_POST['student_id'];
+  $user_id = $_POST['user_id'];
   $email = $_POST['email'];
   $fname = $_POST['fname'];
   $mname = $_POST['mname'];
@@ -22,10 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Insert new user data into the database
-    $query = "INSERT INTO users (student_id, email, fname, mname, lname, suffix, fullname, department, password) 
-                  VALUES (:student_id, :email, :fname, :mname, :lname, :suffix, :fullname, :department, :password)";
+    $query = "INSERT INTO users (user_id, email, fname, mname, lname, suffix, fullname, department, password) 
+                  VALUES (:user_id, :email, :fname, :mname, :lname, :suffix, :fullname, :department, :password)";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':student_id', $student_id);
+    $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':fname', $fname);
     $stmt->bindParam(':mname', $mname);

@@ -69,7 +69,7 @@
             <form>
               <div class="mb-3">
                 <label class="form-label">Student ID</label>
-                <input id="student_id" name="student_id" type="text" class="form-control p_input">
+                <input id="user_id" name="user_id" type="text" class="form-control p_input">
               </div>
               <div class="mb-3 form-password-toggle">
                 <div class="d-flex justify-content-between">
@@ -114,13 +114,13 @@
   <script>
     $("#login").click(function() {
 
-      var student_id = $('#student_id').val();
+      var user_id = $('#user_id').val();
       var password = $('#password').val();
 
-      console.log(student_id, password);
+      console.log(user_id, password);
 
       $.post("server/login.inc.php", {
-        student_id: student_id,
+        user_id: user_id,
         password: password
       }, function(response) {
 

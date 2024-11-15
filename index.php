@@ -36,7 +36,7 @@ $tit = 'Dashboard';
         <!-- / Navbar -->
 
         <!-- Content wrapper -->
-                <div class="content-wrapper">
+        <div class="content-wrapper">
           <div class="barcode-container">
             <svg id="barcode"></svg>
           </div>
@@ -57,11 +57,11 @@ $tit = 'Dashboard';
   <!-- Core JS -->
   <?php include 'partials/_footerjs.php'
   ?>
-  
+
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const barcodeValue = <?php echo  $_SESSION['user']['student_id'] ?>;
+      const barcodeValue = <?php echo  $_SESSION['user']['user_id'] ?>;
 
       if (barcodeValue) {
         JsBarcode("#barcode", barcodeValue, {
