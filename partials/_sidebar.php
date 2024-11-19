@@ -118,7 +118,14 @@ function spg($hyp)
       </a>
     </li>
 
-    <li class="menu-item  <?php echo pg('Rewards')[0]; ?>">
+    <li class="menu-item  <?php echo pg('User Management')[0]; ?>">
+      <a href="User_management.php" class="menu-link">
+        <i class="menu-icon tf-icon bx bxs-user-detail"></i>
+        <div data-i18n="Analytics">User Management</div>
+      </a>
+    </li>
+
+      <li class="menu-item  <?php echo pg('Rewards')[0]; ?>">
       <a href="Reward_sys.php" class="menu-link">
         <i class="menu-icon tf-icons bx bx-credit-card"></i>
         <div data-i18n="Analytics">Rewards System</div>

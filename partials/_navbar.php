@@ -16,7 +16,7 @@
           type="text"
           id="search-bar"
           class="form-control border-0 shadow-none"
-          style="background: #999999bb !important;"
+          style="background: #942828 !important;"
           placeholder="Search..."
           aria-label="Search..." />
       </div>

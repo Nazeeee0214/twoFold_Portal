@@ -1,8 +1,8 @@
 <?php
 
-$mpg = 'Rewards';
-$spg = 'rs';
-$tit = 'Rewards';
+$mpg = 'User Management';
+$spg = 'em';
+$tit = 'User Management';
 
 
 
@@ -23,7 +23,8 @@ include 'partials/_header.php' ?>
         <!-- Navbar Include -->
         <?php include 'partials/_navbar.php' ?>
 
-      
+        <!-- Content wrapper -->
+
 
       </div> <!-- End of Layout Container -->
 
@@ -35,7 +36,7 @@ include 'partials/_header.php' ?>
     <!-- Footer JS Include -->
     <?php include 'partials/_footerjs.php' ?>
 
- 
+    </script>
 </body>
 
 </html>

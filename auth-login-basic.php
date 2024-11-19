@@ -65,7 +65,7 @@
               </a>
             </div>
             <!-- /Logo -->
-            <h4 class="mb-2">Welcome to SmartBin! 👋</h4>
+            <h4 class="mb-2">Welcome to SmartBin! </h4>
             <form>
               <div class="mb-3">
                 <label class="form-label">Student ID</label>
