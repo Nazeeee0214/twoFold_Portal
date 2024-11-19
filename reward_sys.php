@@ -23,7 +23,6 @@ include 'partials/_header.php' ?>
         <!-- Navbar Include -->
         <?php include 'partials/_navbar.php' ?>
 
-      
 
       </div> <!-- End of Layout Container -->
 
