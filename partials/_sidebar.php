@@ -80,7 +80,7 @@ function spg($hyp)
     <!-- Dashboard -->
     <li class="menu-item  <?php echo pg('Dashboard')[0]; ?>">
       <a href="index.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <i class="menu-icon tf-icons bx bxs-dashboard"></i>
         <div data-i18n="Analytics">Dashboard</div>
       </a>
     </li>
@@ -99,7 +99,7 @@ function spg($hyp)
     <!--along with the Dashboard_profile-->
     <li class="menu-item  <?php echo pg('Profile')[0]; ?>">
       <a href="profile.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-user-circle"></i>
+        <i class="menu-icon tf-icons bx bxs-user-detail"></i>
         <div data-i18n="Analytics">Profile</div>
       </a>
     </li>
