@@ -22,91 +22,87 @@ $tit = 'Transactions';
 
         <!-- Content Wrapper -->
         <div class="content-wrapper">
-          <div class="container mt-4">
-            <h3>Transaction History</h3>
-            
-            <!-- Transaction History Table -->
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead class="thead-dark">
-                  <tr>
-                    <th>No. of Transactions</th>
-                    <th>Current Rewards Points</th>
-                    <th>Added Points</th>
-                    <th>Redeemed Points</th>
-                    <th>Claimed Item</th>
-                    <th>Total Rewards Points</th>
-                  </tr>
-                </thead>
-                <tbody id="transactionTableBody">
-                  <?php
-                    // Initial 10 rows for demonstration
-                    for ($i = 1; $i <= 10; $i++) {
-                      echo "<tr>
-                              <td>{$i}</td>
-                              <td>100</td>
-                              <td>20</td>
-                              <td>5</td>
-                              <td>Gift Card</td>
-                              <td>115</td>
-                            </tr>";
-                    }
-                  ?>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- Pagination Buttons -->
-            <div class="text-center my-3">
-              <button id="prevPageBtn" class="btn btn-secondary" disabled>Previous</button>
-              <button id="nextPageBtn" class="btn btn-primary">Next</button>
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="card ps-5 pe-5 pt-5">
+              <h3>Transaction History</h3>
+              <div class="table-responsive text-nowrap">
+                <table class="table table-hover" id="transaction_history">
+                  <thead>
+                    <tr>
+                      <th>Transaction_ID</th>
+                      <th>Item</th>
+                      <th>Quantity</th>
+                      <th>Points Deducted</th>
+                      <th>Service Availed</th>
+                      <th>Timestamp</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
-        <!-- Footer JS Include -->
-        <?php include 'partials/_footerjs.php'; ?>
       </div>
     </div>
   </div>
-
+  <!-- Footer JS Include -->
+  <?php include 'partials/_footerjs.php'; ?>
   <script>
-    let currentPage = 1;
-    const rowsPerPage = 10;
+    $(document).ready(function() {
+      const table = $('#transaction_history').DataTable({
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+          "url": "server/transaction_table.inc.php",
+          "type": "GET"
+        },
+        "pageLength": 5, // Default entries per page
+        "lengthMenu": [5, 10, 20], // Dropdown options for number of entries
+        "columns": [{
+            "data": "id"
+          },
+          {
+            "data": "acq_items"
+          },
+          {
+            "data": "item_qty"
+          },
+          {
+            "data": "pts_deducted",
+            "render": function(data, type, row) {
+              return data > 0 ? `-${data}` : data;
+            }
+          },
+          {
+            "data": "service"
+          },
+          {
+            "data": "timestamp"
+          }
+        ],
+        "ordering": false,
 
-    document.getElementById('nextPageBtn').addEventListener('click', function() {
-      currentPage++;
-      updateTable(currentPage);
+        "drawCallback": function(settings) {
+          // Ensure fixed number of rows by adding placeholder rows
+          const api = this.api();
+          const rowsDisplayed = api.rows({
+            page: 'current'
+          }).count();
+          const rowsNeeded = api.page.len() - rowsDisplayed;
+
+          if (rowsNeeded > 0) {
+            for (let i = 0; i < rowsNeeded; i++) {
+              $('#transaction_history tbody').append(
+                `<tr class="placeholder-row"><td colspan="6">&nbsp;</td></tr>`
+              );
+            }
+          }
+        }
+      });
     });
-
-    document.getElementById('prevPageBtn').addEventListener('click', function() {
-      if (currentPage > 1) {
-        currentPage--;
-        updateTable(currentPage);
-      }
-    });
-
-    function updateTable(page) {
-      const tableBody = document.getElementById('transactionTableBody');
-      tableBody.innerHTML = ''; // Clear existing rows
-
-      // Dummy data example for the next or previous 10 rows
-      for (let i = 1; i <= rowsPerPage; i++) {
-        const rowNumber = (page - 1) * rowsPerPage + i;
-        const row = `<tr>
-                      <td>${rowNumber}</td>
-                      <td>100</td>
-                      <td>20</td>
-                      <td>5</td>
-                      <td>Gift Card</td>
-                      <td>115</td>
-                    </tr>`;
-        tableBody.innerHTML += row;
-      }
-
-      // Update button states
-      document.getElementById('prevPageBtn').disabled = page === 1;
-      document.getElementById('nextPageBtn').disabled  = false; // Adjust logic if needed based on data availability
-    }
   </script>
 </body>
+
 </html>

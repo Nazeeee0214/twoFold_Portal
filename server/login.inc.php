@@ -13,7 +13,7 @@ if (!empty('user_id') && !empty('password')) {
         // Set PDO to throw exceptions for errors
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $query = "SELECT id, user_id, password, restriction, fullname FROM users WHERE user_id = :user_id";
+        $query = "SELECT id, user_id, password, restriction, fullname, points FROM users WHERE user_id = :user_id";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_STR);
         $stmt->execute();
@@ -26,6 +26,7 @@ if (!empty('user_id') && !empty('password')) {
                 'fullname' => $result['fullname'],
                 'restrictions' => $result['restriction'],
                 'user_id' => $result['user_id'],
+                'points' => $result['points'],
             ];
             echo "success";
         } else {

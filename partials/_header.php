@@ -44,6 +44,7 @@ if (!isset($_SESSION['user'])) {
   <link rel="stylesheet" href="assets/vendor/libs/apex-charts/apex-charts.css" />
 
   <!-- Page CSS -->
+  <link rel="stylesheet" href="assets/css/datatable.css">
 
   <!-- Helpers -->
   <script src="assets/vendor/js/helpers.js"></script>
