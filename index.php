@@ -134,7 +134,7 @@ $tit = 'Dashboard';
         "processing": true,
         "serverSide": true,
         "ajax": {
-          "url": "server/transaction_table.inc.php",
+          "url": "server/reward_table.inc.php",
           "type": "GET"
         },
         "columns": [{
@@ -156,7 +156,24 @@ $tit = 'Dashboard';
         ], // Sort by the 4th column (timestamp) in descending order
         "lengthChange": false,
         "searching": false,
-        "ordering": false
+        "ordering": false,
+
+        "drawCallback": function(settings) {
+          // Ensure fixed number of rows by adding placeholder rows
+          const api = this.api();
+          const rowsDisplayed = api.rows({
+            page: 'current'
+          }).count();
+          const rowsNeeded = api.page.len() - rowsDisplayed;
+
+          if (rowsNeeded > 0) {
+            for (let i = 0; i < rowsNeeded; i++) {
+              $('#transaction_history tbody').append(
+                `<tr class="placeholder-row"><td colspan="6">&nbsp;</td></tr>`
+              );
+            }
+          }
+        }
       });
     });
   </script>

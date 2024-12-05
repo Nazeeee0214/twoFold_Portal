@@ -1,44 +1,45 @@
 <?php
 
 require 'db_conn.inc.php';
-session_start(); // Ensure session is started to access logged-in user data
+session_start(); // Start session to access user data
 
-// Check if the user is logged in and retrieve the user_id
+// Ensure the user is logged in
 if (!isset($_SESSION['user']['user_id'])) {
    echo json_encode(["error" => "User not logged in"]);
    exit;
 }
+
 $loggedInUserId = $_SESSION['user']['user_id'];
 
-// Default values for length and start
-$limit = isset($_GET['length']) ? (int) $_GET['length'] : 10; // Default to 10 records
-$start = isset($_GET['start']) ? (int) $_GET['start'] : 0;    // Default to 0
-$searchValue = isset($_GET['search']['value']) ? $_GET['search']['value'] : ''; // Default to empty string
+// Define default pagination parameters
+$limit = isset($_GET['length']) ? (int) $_GET['length'] : 5; // Default to 5 rows per page
+$start = isset($_GET['start']) ? (int) $_GET['start'] : 0;   // Start at first record
+$searchValue = isset($_GET['search']['value']) ? $_GET['search']['value'] : ''; // Search input
 
 try {
-   // Get total records for the logged-in user
+   // Count total records for the logged-in user
    $totalQuery = $pdo->prepare("SELECT COUNT(*) FROM transaction_history WHERE user_id = :user_id");
    $totalQuery->bindValue(':user_id', $loggedInUserId, PDO::PARAM_STR);
    $totalQuery->execute();
    $totalRecords = $totalQuery->fetchColumn();
 
-   // Get filtered records count for the logged-in user
+   // Count filtered records
    $filteredQuery = "SELECT COUNT(*) FROM transaction_history 
-                     WHERE user_id = :user_id 
-                     AND (pts_earned LIKE :search OR bottle_quantity LIKE :search OR timestamp LIKE :search)";
+                      WHERE user_id = :user_id 
+                      AND (acq_items LIKE :search OR item_qty LIKE :search OR pts_deducted LIKE :search OR service LIKE :search OR timestamp LIKE :search)";
    $filteredStmt = $pdo->prepare($filteredQuery);
    $filteredStmt->bindValue(':user_id', $loggedInUserId, PDO::PARAM_STR);
    $filteredStmt->bindValue(':search', "%$searchValue%", PDO::PARAM_STR);
    $filteredStmt->execute();
-   $filteredRecord = $filteredStmt->fetchColumn();
+   $filteredRecords = $filteredStmt->fetchColumn();
 
-   // Get filtered data for the logged-in user
-   $dataQuery = "SELECT id, user_id, pts_earned, bottle_quantity, pts_deducted, acq_items, item_qty, service, timestamp 
-                 FROM transaction_history 
-                 WHERE user_id = :user_id 
-                 AND (pts_earned LIKE :search OR bottle_quantity LIKE :search OR pts_deducted LIKE :search OR acq_items LIKE :search OR item_qty LIKE :search OR service LIKE :search OR timestamp LIKE :search) 
-                 ORDER BY timestamp DESC 
-                 LIMIT :start, :limit";
+   // Retrieve filtered data
+   $dataQuery = "SELECT id, acq_items, item_qty, pts_deducted, service, timestamp 
+                  FROM transaction_history 
+                  WHERE user_id = :user_id 
+                  AND (acq_items LIKE :search OR item_qty LIKE :search OR pts_deducted LIKE :search OR service LIKE :search OR timestamp LIKE :search) 
+                  ORDER BY timestamp DESC 
+                  LIMIT :start, :limit";
    $dataStmt = $pdo->prepare($dataQuery);
    $dataStmt->bindValue(':user_id', $loggedInUserId, PDO::PARAM_STR);
    $dataStmt->bindValue(':search', "%$searchValue%", PDO::PARAM_STR);
@@ -47,20 +48,21 @@ try {
    $dataStmt->execute();
    $data = $dataStmt->fetchAll(PDO::FETCH_ASSOC);
 
-   // Prepare the response
-   $response = [
-      "draw" => isset($_GET['draw']) ? intval($_GET['draw']) : 1,  // Make sure draw is an integer
+   // Filter rows to exclude invalid data
+   $filteredData = array_filter($data, function ($row) {
+      return $row['pts_deducted'] !== null && $row['pts_deducted'] !== 0 &&
+         $row['acq_items'] && $row['item_qty'] !== null && $row['item_qty'] !== 0 &&
+         $row['service'];
+   });
+
+   // Return JSON response
+   echo json_encode([
+      "draw" => isset($_GET['draw']) ? intval($_GET['draw']) : 1,
       "recordsTotal" => $totalRecords,
-      "recordsFiltered" => $filteredRecord,
-      "data" => $data
-   ];
-
-   // Return the response in JSON format
-   echo json_encode($response);
+      "recordsFiltered" => $filteredRecords,
+      "data" => array_values($filteredData) // Reindex array after filtering
+   ]);
 } catch (PDOException $e) {
-   // Output the error to error log
    error_log("Database Error: " . $e->getMessage());
-
-   // Optionally, display a simple error message in production
    echo json_encode(["error" => "An error occurred"]);
 }

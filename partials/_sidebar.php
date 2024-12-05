@@ -124,13 +124,13 @@ function spg($hyp)
         <div data-i18n="Analytics">User Management</div>
       </a>
     </li>
-
-      <li class="menu-item  <?php echo pg('Rewards')[0]; ?>">
-      <a href="Reward_sys.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-credit-card"></i>
-        <div data-i18n="Analytics">Rewards System</div>
+    <li class="menu-item  <?php echo pg('Admin Management')[0]; ?>">
+      <a href="admin_manage.php" class="menu-link">
+        <i class="menu-icon tf-icon bx bxs-cog"></i>
+        <div data-i18n="Analytics">Admin Management</div>
       </a>
     </li>
+
 
     <!--Management for the ADMIN PORTAL-->
     <li class="menu-header small text-uppercase">

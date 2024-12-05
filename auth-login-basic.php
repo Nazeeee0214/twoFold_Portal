@@ -112,26 +112,42 @@
   <?php include("partials/_footerjs.php");
   ?>
   <script>
-    $("#login").click(function() {
+    $(document).ready(function() {
+      // Function to handle the login
+      function handleLogin() {
+        var user_id = $('#user_id').val();
+        var password = $('#password').val();
 
-      var user_id = $('#user_id').val();
-      var password = $('#password').val();
+        console.log(user_id, password);
 
-      console.log(user_id, password);
+        $.post("server/login.inc.php", {
+          user_id: user_id,
+          password: password
+        }, function(response) {
+          if (response === "success") {
+            alert('Logged in successfully!');
 
-      $.post("server/login.inc.php", {
-        user_id: user_id,
-        password: password
-      }, function(response) {
+            window.location.href = "index.php";
+          } else {
+            alert(response);
+          }
+        });
+      }
 
-        if (response === "success") {
-          window.location.href = "index.php";
-        } else {
-          alert(response);
+      // Trigger login on button click
+      $("#login").click(function() {
+        handleLogin();
+      });
+
+      // Trigger login on pressing "Enter"
+      $('#user_id, #password').on('keydown', function(e) {
+        if (e.key === 'Enter') {
+          handleLogin();
         }
       });
     });
   </script>
+
   <!-- Page JS -->
 
   <!-- Place this tag in your head or just before your close body tag. -->

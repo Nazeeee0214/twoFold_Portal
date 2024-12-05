@@ -52,17 +52,17 @@
 <body>
   <!-- Content -->
 
-  <div class="container-xxl">
+  <div class="container-xxl mt-1">
     <div class="">
       <div class="authentication-inner">
         <!-- Register -->
         <div class="card">
           <div class="card-body">
-            <h4 class="mb-2">Welcome to Sneat! 👋</h4>
+            <h4 class="mb-2">Welcome to SmartBin Portal! 👋</h4>
             <p class="mb-4">Please sign-in to your account and start the adventure</p>
             <form>
               <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="user_id">Student ID</label>
+                <label class="col-sm-2 col-form-label" for="user_id">User ID</label>
                 <div class="col-sm-10">
                   <div class="input-group input-group-merge">
                     <span class="input-group-text"><i class="bx bx-user"></i></span>
@@ -71,7 +71,7 @@
                       class="form-control"
                       id="user_id"
                       name="user_id"
-                      placeholder="Student number" />
+                      placeholder="Ex:(Student ID/Employee ID)" />
                   </div>
                 </div>
               </div>

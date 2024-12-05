@@ -56,7 +56,21 @@ $tit = 'Transactions';
         "serverSide": true,
         "ajax": {
           "url": "server/transaction_table.inc.php",
-          "type": "GET"
+          "type": "GET",
+          "dataSrc": function(json) {
+            // Filter data to exclude rows with zero/null values
+            const filteredData = json.data.filter(row =>
+              row.pts_deducted !== 0 && row.pts_deducted !== null &&
+              row.acq_items && row.item_qty !== 0 && row.item_qty !== null &&
+              row.service
+            );
+
+            // Update the recordsFiltered count to match the filtered data
+            json.recordsFiltered = filteredData.length;
+
+            // Return the filtered data to DataTables
+            return filteredData;
+          }
         },
         "pageLength": 5, // Default entries per page
         "lengthMenu": [5, 10, 20], // Dropdown options for number of entries
@@ -83,7 +97,11 @@ $tit = 'Transactions';
           }
         ],
         "ordering": false,
-
+        "language": {
+          "info": "Showing _START_ to _END_ of _TOTAL_ entries", // Customize info without filtered text
+          "infoEmpty": "No entries available",
+          "infoFiltered": "" // Remove the "filtered from X total entries"
+        },
         "drawCallback": function(settings) {
           // Ensure fixed number of rows by adding placeholder rows
           const api = this.api();
@@ -103,6 +121,7 @@ $tit = 'Transactions';
       });
     });
   </script>
+
 </body>
 
 </html>
