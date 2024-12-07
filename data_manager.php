@@ -66,7 +66,7 @@ var optionBotlcap;
 
 optionBotlcap = {
   xAxis: {
-    data: ['Clear', 'Colored'],
+    data: ['Cleared Bottle ', 'Colored Bottle'],
     axisLine: {
       show: false // Remove the x-axis line
     },
@@ -95,7 +95,7 @@ optionBotlcap = {
       {
         value: 30,
         groupId: 'clear',
-        name: 'Clear',
+        name: 'Cleared Bottle',
         itemStyle: {
           color: '#00FFFF' // Green color for "Clear"
         }
@@ -103,7 +103,7 @@ optionBotlcap = {
       {
         value: 20,
         groupId: 'colored',
-        name: 'Colored',
+        name: 'Colored Bottle',
         itemStyle: {
           color: 'green' // Green color for "Colored"
         }
@@ -135,8 +135,8 @@ var option;
 
 option = {
   title: {
-    text: 'STORGE CAPACITY',
-    subtext: '1000 Capacity',
+    text: 'STORAGE CAPACITY',
+    subtext: '100 Capacity',
     left: 'center'
   },
   tooltip: {
@@ -152,9 +152,9 @@ option = {
       type: 'pie',
       radius: '50%',
       data: [
-        { value: 600, name: 'Cleared Bottle' },
-        { value: 345, name: 'Colored Bottle' },
-        { value: 55, name: 'Available Storage' },
+        { value: 45, name: 'Cleared Bottle' },
+        { value: 80, name: 'Colored Bottle' },
+        { value: 75, name: 'Available Storage' },
       
       ],
       emphasis: {
