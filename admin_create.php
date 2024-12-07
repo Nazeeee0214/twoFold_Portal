@@ -27,7 +27,7 @@ include 'partials/_header.php' ?>
                 <div class="content-wrapper">
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <div class="container-xxl flex-grow-1 container-p-y">
-                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin Management /</span> Manage Accounts</h4>
+                            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Admin Management /</span> Create Admin</h4>
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -43,7 +43,7 @@ include 'partials/_header.php' ?>
                             </div>
                             <form>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="user_id">User ID</label>
+                                    <label class="col-sm-2 col-form-label" for="user_id">Admin ID</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text"><i class="bx bx-user"></i></span>
@@ -52,7 +52,7 @@ include 'partials/_header.php' ?>
                                                 class="form-control"
                                                 id="user_id"
                                                 name="user_id"
-                                                placeholder="Ex:(Student ID/Employee ID)" />
+                                                placeholder="Admin ID" />
                                         </div>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@ include 'partials/_header.php' ?>
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text"><i class="bx bx-user"></i></span>
                                             <select class="form-select" id="suffix" name="suffix" aria-label="Default select example">
-                                                <option selected>Please Select your suffix.</option>
+                                                <option selected>Select suffix</option>
                                                 <option value="Jr.">Jr.</option>
                                                 <option value="Sr.">Sr.</option>
                                                 <option value="II">II</option>
@@ -139,22 +139,8 @@ include 'partials/_header.php' ?>
                                                 type="text"
                                                 class="form-control"
                                                 id="fullname"
-                                                placeholder="  Your name"
+                                                placeholder="  Full Name"
                                                 readonly />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="department">Department</label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                            <select class="form-select" id="department" name="department" aria-label="Default select example">
-                                                <option selected>Please select your Department</option>
-                                                <option value="1">BSCPE</option>
-                                                <option value="2">BSECE</option>
-                                                <option value="3">BSEE</option>
-                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -173,8 +159,8 @@ include 'partials/_header.php' ?>
                                         </div>
                                     </div>
                                 </div>
-
-                                <button class="btn btn-primary d-grid w-100" id="reg">Sign up</button>
+                                <input type="hidden" id="restriction" name="restriction" value="ADMIN">
+                                <button class="btn btn-primary d-grid w-100" id="reg_adm">Create Admin</button>
 
                                 <div class="row justify-content-end">
                                 </div>
@@ -189,101 +175,65 @@ include 'partials/_header.php' ?>
     <?php include 'partials/_footerjs.php'; ?>
     <script>
         $(document).ready(function() {
-            const table = $('#user_management_table').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "ajax": {
-                    "url": "server/fetch_users.inc.php",
-                    "type": "GET"
-                },
-                "columns": [{
-                        "data": "user_id"
-                    },
-                    {
-                        "data": "fullname"
-                    },
-                    {
-                        "data": "status",
-                        "render": function(data, type, row) {
-                            return `
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control status-input"
-                  placeholder="Select status"
-                  value="${data}"
-                  readonly
-                  data-id="${row.user_id}"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                />
-                <button
-                  class="btn btn-outline-secondary dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="javascript:void(0);" data-value="ACTIVE">ACTIVE</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);" data-value="INACTIVE">INACTIVE</a></li>
-                </ul>
-              </div>
-            `;
-                        }
-                    },
-                    {
-                        "data": null,
-                        "render": function(data, type, row) {
-                            return `
-              <button class="save-btn btn btn-success" data-id="${row.user_id}">Save</button>
-              <button class="delete-btn btn btn-danger" data-id="${row.user_id}">Delete</button>
-            `;
-                        },
-                        "orderable": false
-                    }
-                ]
+            // Update fullname field when any of the input fields change
+            $('#fname, #mname, #lname, #suffix').on('input', function() {
+                var fname = $('#fname').val();
+                var mname = $('#mname').val();
+                var lname = $('#lname').val();
+                var suffix = $('#suffix').val();
+
+                // Create the full name by concatenating the values
+                var fullname = fname + (mname ? ' ' + mname : '') + ' ' + lname + (suffix && suffix !== 'Select suffix' ? ' ' + suffix : '');
+
+                // Set the value to the readonly fullname field
+                $('#fullname').val(fullname);
             });
 
-            // Handle status selection
-            $('#user_management_table').on('click', '.dropdown-item', function() {
-                const statusInput = $(this).closest('.input-group').find('.status-input');
-                const newStatus = $(this).data('value');
-                statusInput.val(newStatus); // Update the input field with the selected value
+            // Password visibility toggle
+            $(".input-group-text.cursor-pointer").click(function() {
+                var passwordField = $("#password");
+                var type = passwordField.attr("type") === "password" ? "text" : "password";
+                passwordField.attr("type", type);
+                $(this).find("i").toggleClass("bx-hide bx-show");
             });
 
-            // Save status change
-            $('#user_management_table').on('click', '.save-btn', function() {
-                const userId = $(this).data('id');
-                const newStatus = $(`.status-input[data-id="${userId}"]`).val();
+            // Handle form submission
+            $("form").on('submit', function(event) {
+                event.preventDefault();
 
-                $.post('server/update_user_status.inc.php', {
-                    user_id: userId,
-                    status: newStatus
-                }, function(response) {
-                    if (response.success) {
-                        alert('Status updated successfully.');
-                        table.ajax.reload();
-                    } else {
-                        alert('Failed to update status.');
-                    }
-                }, 'json');
-            });
+                var user_id = $('#user_id').val();
+                var email = $('#email').val();
+                var fname = $('#fname').val();
+                var mname = $('#mname').val();
+                var lname = $('#lname').val();
+                var suffix = $('#suffix').val();
+                var fullname = $('#fullname').val();
+                var restriction = $('#restriction').val();
+                var password = $('#password').val();
 
-            // Delete user
-            $('#user_management_table').on('click', '.delete-btn', function() {
-                const userId = $(this).data('id');
-                if (confirm('Are you sure you want to delete this user?')) {
-                    $.post('server/delete_user.inc.php', {
-                        user_id: userId
-                    }, function(response) {
-                        if (response.success) {
-                            alert('User deleted successfully.');
-                            table.ajax.reload();
-                        } else {
-                            alert('Failed to delete user.');
-                        }
-                    }, 'json');
+                // Form validation
+                if (!user_id || !email || !fname || !lname || !password) {
+                    alert("Please fill all required fields.");
+                    return;
                 }
+
+                // Send data via POST
+                $.post("server/register_admin.inc.php", {
+                    user_id: user_id,
+                    email: email,
+                    fname: fname,
+                    mname: mname,
+                    lname: lname,
+                    suffix: suffix,
+                    restriction: restriction,
+                    fullname: fullname,
+                    password: password,
+                }, function(response) {
+                    alert(response);
+                    if (response === "Admin created successfuly!") {
+                        window.location.href = "admin_create.php";
+                    }
+                });
             });
         });
     </script>
