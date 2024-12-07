@@ -9,11 +9,11 @@ $length = isset($_GET['length']) ? intval($_GET['length']) : 10;
 
 try {
     // Total records count
-    $totalQuery = $pdo->query("SELECT COUNT(*) FROM users");
+    $totalQuery = $pdo->query("SELECT COUNT(*) FROM users WHERE restriction = 'USER'");
     $totalRecords = $totalQuery->fetchColumn();
 
     // Fetch paginated data
-    $stmt = $pdo->prepare("SELECT user_id, fullname, status FROM users LIMIT :start, :length");
+    $stmt = $pdo->prepare("SELECT user_id, fullname, status FROM users WHERE restriction = 'USER' LIMIT :start, :length");
     $stmt->bindValue(':start', $start, PDO::PARAM_INT);
     $stmt->bindValue(':length', $length, PDO::PARAM_INT);
     $stmt->execute();

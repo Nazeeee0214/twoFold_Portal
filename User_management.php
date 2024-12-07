@@ -89,6 +89,7 @@ include 'partials/_header.php' ?>
                 ></button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="javascript:void(0);" data-value="ACTIVE">ACTIVE</a></li>
+                  <li><a class="dropdown-item" href="javascript:void(0);" data-value="LOCKED">LOCKED</a></li>
                   <li><a class="dropdown-item" href="javascript:void(0);" data-value="INACTIVE">INACTIVE</a></li>
                 </ul>
               </div>
