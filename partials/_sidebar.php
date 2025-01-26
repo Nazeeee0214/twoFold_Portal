@@ -1,4 +1,24 @@
 <?php
+
+
+function k($requiredRole)
+{
+  // Fetch the current user's role from the session
+  $currentRole = $_SESSION["user"]["restriction"];
+
+  // Define role hierarchy
+  $rolesHierarchy = [
+    'SUPERADMIN' => 3,
+    'ADMIN' => 2,
+    'USER' => 1
+  ];
+
+  // Check if the current role is valid and has sufficient access
+  return isset($rolesHierarchy[$currentRole]) && $rolesHierarchy[$currentRole] >= $requiredRole;
+}
+
+
+
 function pg($pyh)
 {
   if ($GLOBALS['mpg'] == $pyh) {
@@ -107,30 +127,36 @@ function spg($hyp)
 
 
     <!--Management for the ADMIN PORTAL-->
-    <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">Management</span>
-    </li>
+    <?php if (k(2)) { // admin and higher 
+    ?>
 
-    <li class="menu-item  <?php echo pg('Data Manager')[0]; ?>">
-      <a href="data_manager.php" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-analyse"></i>
-        <div data-i18n="Analytics">Data Manager</div>
-      </a>
-    </li>
+      <li class="menu-header small text-uppercase">
+        <span class="menu-header-text">Management</span>
+      </li>
 
-    <li class="menu-item  <?php echo pg('User Management')[0]; ?>">
-      <a href="User_management.php" class="menu-link">
-        <i class="menu-icon tf-icon bx bxs-user-detail"></i>
-        <div data-i18n="Analytics">User Management</div>
-      </a>
-    </li>
-    <li class="menu-item  <?php echo pg('Admin Management')[0]; ?>">
-      <a href="admin_manage.php" class="menu-link">
-        <i class="menu-icon tf-icon bx bxs-cog"></i>
-        <div data-i18n="Analytics">Admin Management</div>
-      </a>
-    </li>
+      <li class="menu-item  <?php echo pg('Data Manager')[0]; ?>">
+        <a href="data_manager.php" class="menu-link">
+          <i class="menu-icon tf-icons bx bx-analyse"></i>
+          <div data-i18n="Analytics">Data Manager</div>
+        </a>
+      </li>
 
+      <li class="menu-item  <?php echo pg('User Management')[0]; ?>">
+        <a href="User_management.php" class="menu-link">
+          <i class="menu-icon tf-icon bx bxs-user-detail"></i>
+          <div data-i18n="Analytics">User Management</div>
+        </a>
+      </li>
+      <?php if (k(3)) { // admin and higher 
+      ?>
+        <li class="menu-item  <?php echo pg('Admin Management')[0]; ?>">
+          <a href="admin_manage.php" class="menu-link">
+            <i class="menu-icon tf-icon bx bxs-cog"></i>
+            <div data-i18n="Analytics">Admin Management</div>
+          </a>
+        </li>
+      <?php } ?>
+    <?php } ?>
 
     <!--Management for the ADMIN PORTAL-->
     <li class="menu-header small text-uppercase">

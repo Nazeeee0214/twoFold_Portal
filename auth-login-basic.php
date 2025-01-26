@@ -125,7 +125,6 @@
           password: password
         }, function(response) {
           if (response === "success") {
-            alert('Logged in successfully!');
 
             window.location.href = "index.php";
           } else {
