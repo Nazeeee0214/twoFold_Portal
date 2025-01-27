@@ -147,6 +147,13 @@ function spg($hyp)
           <div data-i18n="Analytics">User Management</div>
         </a>
       </li>
+
+      <li class="menu-item  <?php echo pg('Rewards')[0]; ?>">
+        <a href="reward_sys.php" class="menu-link">
+          <i class="menu-icon tf-icon bx bxs-user-detail"></i>
+          <div data-i18n="Analytics">Reward System</div>
+        </a>
+      </li>
       <?php if (k(3)) { // admin and higher 
       ?>
         <li class="menu-item  <?php echo pg('Admin Management')[0]; ?>">
