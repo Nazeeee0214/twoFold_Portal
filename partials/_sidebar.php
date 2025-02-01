@@ -150,7 +150,7 @@ function spg($hyp)
 
       <li class="menu-item  <?php echo pg('Rewards')[0]; ?>">
         <a href="reward_sys.php" class="menu-link">
-          <i class="menu-icon tf-icon bx bxs-user-detail"></i>
+          <i class="menu-icon tf-icon bx bxs-medal"></i>
           <div data-i18n="Analytics">Reward System</div>
         </a>
       </li>
