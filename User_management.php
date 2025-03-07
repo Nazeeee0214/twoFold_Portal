@@ -4,15 +4,12 @@ $mpg = 'User Management';
 $spg = 'um';
 $tit = 'User Management';
 
+include 'partials/_header.php'; ?>
 
-
-include 'partials/_header.php' ?>
-
-
-<title> <?php echo $tit; ?> </title>
+<title><?php echo $tit; ?></title>
 
 <body>
-  <!-- Layout wrapper -->
+  <!-- Layout Wrapper -->
   <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
       <!-- Sidebar Include -->
@@ -25,12 +22,19 @@ include 'partials/_header.php' ?>
 
         <!-- Content Wrapper -->
         <div class="content-wrapper">
-          <div class="container-xxl flex-grow-1 container-p-y">
-            <div class="card ps-5 pe-5 pt-5">
-              <h3>User Management</h3>
-              <div class="table-responsive text-nowrap">
-                <table id="user_management_table" class="table">
-                  <thead>
+          <div class="container-fluid p-3">
+            <h4 class="fw-bold text-center">
+              <span class="text-muted fw-light">User Management /</span> Manage Users
+            </h4>
+
+            <!-- Card -->
+            <div class="card p-3">
+              <h3 class="text-center">User Management</h3>
+
+              <!-- Table Responsive for Mobile -->
+              <div class="table-responsive">
+                <table id="user_management_table" class="table table-bordered">
+                  <thead class="">
                     <tr>
                       <th>User ID</th>
                       <th>Full Name</th>
@@ -45,66 +49,53 @@ include 'partials/_header.php' ?>
               </div>
             </div>
           </div>
-        </div>
+        </div> <!-- End of Content Wrapper -->
       </div>
     </div>
   </div>
+
   <!-- Footer JS Include -->
   <?php include 'partials/_footerjs.php'; ?>
+
   <script>
     $(document).ready(function() {
       const table = $('#user_management_table').DataTable({
-        "processing": true,
-        "serverSide": true,
-        "ajax": {
-          "url": "server/fetch_users.inc.php",
-          "type": "GET"
+        processing: true,
+        serverSide: true,
+        ajax: {
+          url: "server/fetch_users.inc.php",
+          type: "GET"
         },
-        "columns": [{
-            "data": "user_id"
-          },
-          {
-            "data": "fullname"
-          },
-          {
-            "data": "status",
-            "render": function(data, type, row) {
+        columns: [
+          { data: "user_id" },
+          { data: "fullname" },
+          { 
+            data: "status",
+            render: function(data, type, row) {
               return `
-              <div class="input-group">
-                <input
-                  type="text"
-                  class="form-control status-input"
-                  placeholder="Select status"
-                  value="${data}"
-                  readonly
-                  data-id="${row.user_id}"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                />
-                <button
-                  class="btn btn-outline-secondary dropdown-toggle"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="javascript:void(0);" data-value="ACTIVE">ACTIVE</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);" data-value="LOCKED">LOCKED</a></li>
-                  <li><a class="dropdown-item" href="javascript:void(0);" data-value="INACTIVE">INACTIVE</a></li>
-                </ul>
-              </div>
-            `;
+                <div class="input-group">
+                  <input type="text" class="form-control status-input" value="${data}" readonly data-id="${row.user_id}" data-bs-toggle="dropdown"/>
+                  <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"></button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" data-value="ACTIVE">ACTIVE</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="LOCKED">LOCKED</a></li>
+                    <li><a class="dropdown-item" href="#" data-value="INACTIVE">INACTIVE</a></li>
+                  </ul>
+                </div>
+              `;
             }
           },
-          {
-            "data": null,
-            "render": function(data, type, row) {
+          { 
+            data: null,
+            render: function(data, type, row) {
               return `
-              <button class="save-btn btn btn-success" data-id="${row.user_id}">Save</button>
-              <button class="delete-btn btn btn-danger" data-id="${row.user_id}">Delete</button>
-            `;
+                <div class="d-flex flex-wrap justify-content-center gap-1">
+                  <button class="save-btn btn btn-success btn-sm" data-id="${row.user_id}">Save</button>
+                  <button class="delete-btn btn btn-danger btn-sm" data-id="${row.user_id}">Delete</button>
+                </div>
+              `;
             },
-            "orderable": false
+            orderable: false
           }
         ]
       });
@@ -112,8 +103,7 @@ include 'partials/_header.php' ?>
       // Handle status selection
       $('#user_management_table').on('click', '.dropdown-item', function() {
         const statusInput = $(this).closest('.input-group').find('.status-input');
-        const newStatus = $(this).data('value');
-        statusInput.val(newStatus); // Update the input field with the selected value
+        statusInput.val($(this).data('value'));
       });
 
       // Save status change
@@ -152,7 +142,5 @@ include 'partials/_header.php' ?>
       });
     });
   </script>
-
 </body>
-
 </html>

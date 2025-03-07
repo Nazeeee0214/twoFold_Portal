@@ -63,8 +63,14 @@ include 'partials/_header.php';
 <title><?php echo $tit; ?></title>
 
 <style>
-  /* Your existing CSS styles here */
-  
+  /* General Styling */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+  }
+
   /* Left and Right Containers */
   .container-left, .container-right {
     padding: 20px;
@@ -73,20 +79,9 @@ include 'partials/_header.php';
     background-color: #fff;
     box-sizing: border-box;
     color: #333;
-    margin-top: 40px;
-
-  }
-
-  /* Specific Styling for Left Container (Current Rate) */
-  .container-left {
-    width: 28%;
-    margin-left:200px;
-  }
-
-  /* Specific Styling for Right Container (Update Rate Form) */
-  .container-right {
-     width: 28%;
-    margin-right:200px;
+    margin-top: 20px;
+    width: 100%; /* Default to full width */
+    text-align: center;
   }
 
   /* Bottom Container Styling (Rate Update History) */
@@ -96,8 +91,11 @@ include 'partials/_header.php';
     border-radius: 8px;
     margin-top: 20px;
     border: 1px solid #ddd;
-     margin-top: 60px;
-    margin-left: 34px;
+    width: 90%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-x: auto; /* Enable scrolling for small screens */
   }
 
   /* Table Styling */
@@ -117,54 +115,41 @@ include 'partials/_header.php';
   }
 
   /* Form Styling */
-  input[type="number"] {
-    padding: 10px;
+  input[type="number"], input[type="submit"] {
     width: 100%;
+    padding: 10px;
     border-radius: 5px;
     border: 1px solid #ddd;
     margin-bottom: 15px;
   }
 
   input[type="submit"] {
-    padding: 10px 20px;
     background-color: #800000;
     color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
   }
 
   input[type="submit"]:hover {
-    background-color:rgb(54, 14, 14);
+    background-color: rgb(54, 14, 14);
   }
 
-  /* Heading Styling */
-  h3 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-  }
-
-  h4 {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 10px;
-  }
-
-  h2 {
-    font-size: 2rem;
-    color:rgb(8, 214, 18);
-    margin-top: 0;
-  }
-
-  /* Additional Margins */
+  /* Responsive Layout */
   .row {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
+    padding: 10px;
   }
 
+  /* Desktop: Side by Side */
+  @media (min-width: 768px) {
+    .container-left, .container-right {
+      width: 40%;
+    }
+  }
 </style>
+
 
 <body>
   <!-- Layout wrapper -->
